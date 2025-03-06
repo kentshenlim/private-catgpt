@@ -14,3 +14,4 @@ Chat app with OpenAI integration. Using gpt-4o-mini.
 - [ ] Dynamic design, light theme dark theme
 - [ ] Deploy to Vercel
 - [ ] Favicon
+- [ ] Dark and light theme toggle
