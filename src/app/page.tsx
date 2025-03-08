@@ -1,14 +1,14 @@
 import { api } from "@/trpc/server";
-import { LatestPost } from "./_components/post";
 import Header from "@/app/_components/header";
 import Conversation from "@/app/_components/conversation";
 import Prompt from "@/app/_components/prompt";
 import Footer from "@/app/_components/footer";
 
 export default async function Home() {
-  const hello = await api.post.hello({ text: "from tRPC" });
+  const test = await api.openAI.prompt({ prompt: "Which cat is the best?" });
+  console.log(test);
 
-  void api.post.getLatest.prefetch();
+  // void api.post.getLatest.prefetch();
 
   return (
     <main className="flex h-[100dvh] flex-col px-4">

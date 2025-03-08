@@ -16,3 +16,4 @@ Chat app with OpenAI integration. Using gpt-4o-mini.
 - [ ] Dark and light theme toggle
 - [ ] Change title
 - [ ] Limit length of prompt
+- [ ] Remove public procedure of open ai endpoints
