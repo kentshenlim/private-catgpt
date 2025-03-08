@@ -18,6 +18,6 @@ export const openAIRouter = createTRPCRouter({
       const response =
         completion.choices[0]?.message.content ??
         "CatGPT don't know what to say...";
-      return { role: "user", content: response };
+      return { role: "system", content: response };
     }),
 });
