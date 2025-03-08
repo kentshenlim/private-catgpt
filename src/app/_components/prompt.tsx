@@ -4,7 +4,7 @@ export default function Prompt() {
   return (
     <form
       action=""
-      className="flex flex-col rounded-2xl bg-primary py-3 [&>textarea]:bg-primary"
+      className="flex flex-col rounded-2xl bg-primary py-2 [&>textarea]:bg-primary"
     >
       <textarea
         name="prompt"
