@@ -4,7 +4,6 @@ Chat app with OpenAI integration. Using gpt-4o-mini.
 
 ## TODO
 
-- [ ] Implement simple chat window
 - [ ] Test out OpenAI API, take note of session info
 - [ ] Define backend function call
 - [ ] Link frontend and backend
@@ -16,5 +15,4 @@ Chat app with OpenAI integration. Using gpt-4o-mini.
 - [ ] Favicon
 - [ ] Dark and light theme toggle
 - [ ] Change title
-- [ ] Disable focus outline
 - [ ] Limit length of prompt
