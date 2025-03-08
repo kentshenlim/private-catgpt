@@ -4,16 +4,16 @@
 
 @layer base {
   :root {
-    --color-primary: #e58e26;
-    --color-background: #fce8c3;
-    --color-accent: #6d4c41;
-    --color-text: #4a342e;
+    --color-primary: 249 209 147; /* Light orange */
+    --color-accent: 109 76 65; /* Darker orange*/
+    --color-background: 250 240 220; /* White orange */
+    --color-text: 74 52 46; /* Black orange */
   }
 
   :root[class~="dark"] {
-    --color-primary: #1c1c1c;
-    --color-background: #2e2e2e;
-    --color-accent: #6b7280;
-    --color-text: #d1d5db;
+    --color-primary: 90 96 110;
+    --color-accent: 110 110 110;
+    --color-background: 46 46 46;
+    --color-text: 209 213 219;
   }
 }

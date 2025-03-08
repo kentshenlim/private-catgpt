@@ -15,3 +15,6 @@ Chat app with OpenAI integration. Using gpt-4o-mini.
 - [ ] Deploy to Vercel
 - [ ] Favicon
 - [ ] Dark and light theme toggle
+- [ ] Change title
+- [ ] Disable focus outline
+- [ ] Limit length of prompt
