@@ -4,14 +4,14 @@ export default function Prompt() {
   return (
     <form
       action=""
-      className="flex flex-col rounded-2xl bg-primary px-2 py-3 [&>textarea]:bg-primary"
+      className="flex flex-col rounded-2xl bg-primary py-3 [&>textarea]:bg-primary"
     >
       <textarea
         name="prompt"
         id="prompt"
         placeholder="Ask anything"
-        className="bg-test/[50%] placeholder-text/50 resize-none px-2 py-1 focus:outline-none"
-        rows={3}
+        className="bg-test/[50%] placeholder-text/50 resize-none px-3 py-1 focus:outline-none"
+        rows={2}
       />
       <button
         type="submit"

@@ -2,7 +2,7 @@ import { PanelsTopLeft, PenLine } from "lucide-react";
 
 export default function Header() {
   return (
-    <header className="flex justify-between px-4 py-2 text-accent">
+    <div className="flex justify-between py-2 text-accent">
       <button>
         <PanelsTopLeft strokeWidth={2.5} />
       </button>
@@ -10,6 +10,6 @@ export default function Header() {
       <button>
         <PenLine />
       </button>
-    </header>
+    </div>
   );
 }
