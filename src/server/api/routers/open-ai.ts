@@ -1,11 +1,7 @@
 import { z } from "zod";
 import OpenAI from "openai";
 import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
-
-const MessageSchema = z.object({
-  role: z.enum(["user", "system"]),
-  content: z.string(),
-});
+import { MessageSchema } from "@/lib/schema";
 
 const openai = new OpenAI(); // Will read OPENAI_API_KEY automatically
 
