@@ -1,8 +1,8 @@
 import { api } from "@/trpc/server";
-import Header from "@/app/_components/header";
-import Conversation from "@/app/_components/conversation";
-import Prompt from "@/app/_components/prompt";
-import Footer from "@/app/_components/footer";
+import Header from "@/app/_components/Header";
+import Conversation from "@/app/_components/Conversation";
+import Prompt from "@/app/_components/Prompt";
+import Footer from "@/app/_components/Footer";
 
 export default async function Home() {
   // const test = await api.openAI.chatCompletionPrompt([

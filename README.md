@@ -17,3 +17,4 @@ Chat app with OpenAI integration. Using gpt-4o-mini.
 - [ ] Remove public procedure of open ai endpoints
 - [ ] Maybe limit token sliding window
 - [ ] Store in SQL
+- [ ] Remove example components
