@@ -34,3 +34,12 @@
   border-radius: 4px;
   background: rgb(var(--color-primary));
 }
+
+/* Restore list style */
+ol {
+  @apply list-decimal pl-6;
+}
+
+ul {
+  @apply list-disc pl-6;
+}
