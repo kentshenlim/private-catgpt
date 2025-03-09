@@ -5,15 +5,21 @@ import { shortFakeConversation } from "@/lib/fake-conversation";
 
 const ConversationContext = createContext<{
   conversation: Message[];
-  addConversation: (message: Message) => void;
+  appendMessage: (message: Message) => void;
   clearConversation: () => void;
+  isSystemThinking: boolean;
+  setIsSystemThinking: (isThinking: boolean) => void;
 }>({
   conversation: [],
-  addConversation(message: Message) {
+  appendMessage(message: Message) {
     console.log(`Adding message: ${message.content}, by ${message.role}`);
   },
   clearConversation() {
     console.log("Clearing conversation");
+  },
+  isSystemThinking: false,
+  setIsSystemThinking(isThinking) {
+    console.log(`System is ${isThinking ? "" : "not"} now.`);
   },
 });
 
@@ -25,9 +31,10 @@ export function ConversationProvider({
   const [conversation, setConversation] = useState<Message[]>(
     shortFakeConversation,
   );
+  const [isSystemThinking, setIsSystemThinking] = useState<boolean>(false);
 
-  function addConversation(message: Message) {
-    setConversation((conversation) => [...conversation, message]); // Must use callback here, because Prompt mutate state twice within one event handler
+  function appendMessage(message: Message) {
+    setConversation((conversation) => [...conversation, message]); // Must use callback here, because Prompt mutate state multiple times within one event handler
   }
 
   function clearConversation() {
@@ -36,7 +43,13 @@ export function ConversationProvider({
 
   return (
     <ConversationContext.Provider
-      value={{ conversation, addConversation, clearConversation }}
+      value={{
+        conversation,
+        appendMessage,
+        clearConversation,
+        isSystemThinking,
+        setIsSystemThinking,
+      }}
     >
       {children}
     </ConversationContext.Provider>

@@ -17,5 +17,9 @@ Chat app with OpenAI integration. Using gpt-4o-mini.
 - [ ] Remove example components
 - [ ] Error catching
 - [ ] Scroll down on entering
-- [ ] CatGPT is thinking
 - [ ] When no message
+- [ ] Need to move is thinking state to context so that conversation can render
+      conditionally
+- [ ] localStorage if no SQL
+- [ ] Disable empty prompt
+- [ ] Change font if needed

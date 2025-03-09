@@ -7,20 +7,25 @@ import { useState } from "react";
 import { api } from "@/trpc/react";
 
 export default function Prompt() {
-  const { addConversation, conversation } = useConversation();
+  const { appendMessage, conversation, isSystemThinking, setIsSystemThinking } =
+    useConversation();
   const [userMessage, setUserMessage] = useState("");
-  const sendMessage = api.openAI.chatCompletionPrompt.useMutation();
+  const sendMessage = api.openAI.chatCompletionPrompt.useMutation(); // client - tRPC
 
   function handleSubmit(e: FormEvent) {
-    // handleSubmit mutate state twice, so must use callback in addConversation
+    // handleSubmit mutate state multiple times, so must use callback in addConversation
     e.preventDefault();
-    addConversation({ role: "user", content: userMessage });
+    appendMessage({ role: "user", content: userMessage });
     setUserMessage("");
+    setIsSystemThinking(true);
     sendMessage.mutate(
       [...conversation, { role: "user", content: userMessage }],
       {
         onSuccess: (response) => {
-          addConversation(response);
+          appendMessage(response);
+        },
+        onSettled() {
+          setIsSystemThinking(false);
         },
       },
     );
@@ -44,7 +49,8 @@ export default function Prompt() {
       />
       <button
         type="submit"
-        className="self-end rounded-full bg-accent p-2 text-sm text-background hover:bg-accent/70"
+        className="self-end rounded-full bg-accent p-2 text-sm text-background hover:bg-accent/70 disabled:cursor-not-allowed disabled:opacity-40"
+        disabled={isSystemThinking}
       >
         <SendHorizontal strokeWidth={2} size={20} />
       </button>
