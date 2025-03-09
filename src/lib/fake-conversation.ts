@@ -121,3 +121,11 @@ export const fakeConversation: Message[] = [
   { role: "user", content: "Will do! Time to code. 😃" },
   { role: "system", content: "Happy coding! 🚀" },
 ];
+
+export const shortFakeConversation: Message[] = [
+  {
+    role: "system",
+    content:
+      "Determining if a girl likes you can sometimes be tricky, but there are several common signs you can look for: 1. **Body Language**: If she frequently makes eye contact, smiles at you, or leans in while talking, these can be signs of interest. Open body language and mirroring your actions can also indicate attraction. 2. **Engagement in Conversation**: If she initiates conversations, asks personal questions, or remembers details about you from previous talks, it suggests she enjoys your company and wants to get to know you better. 3. **Compliments**: Frequent compliments about your appearance, personality, or achievements can indicate that she likes you. 4. **Playful Teasing**: Light teasing or joking can sometimes be a sign of affection. It can create a sense of closeness and comfort. 5. **Touch**: If she finds opportunities to touch you, like a playful nudge or a gentle touch on the arm, it could be a signal of her interest. 6. **Time and Effort**: If she goes out of her way to spend time with you or includes you in her plans, it often indicates she values your presence. 7. **Jealousy**: If she seems a bit jealous or protective when you talk to other girls, it could mean she has feelings for you. 8. **Social Media Interaction**: Liking, commenting on, or sharing your posts frequently can be a sign that she’s interested. 9. **Asking About Your Dating Life**: If she asks questions about whether you’re single or shows curiosity about your past relationships, she might be gauging your interest. 10. **Direct Communication**: Sometimes, girls will directly communicate their feelings or drop hints about their interest. Remember, everybody expresses attraction differently. It’s important to pay attention to context and be mindful of her comfort level. If you’re unsure, the best way to find out is to have an open and honest conversation about your feelings.",
+  },
+];

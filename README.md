@@ -18,3 +18,6 @@ Chat app with OpenAI integration. Using gpt-4o-mini.
 - [ ] Maybe limit token sliding window
 - [ ] Store in SQL
 - [ ] Remove example components
+- [ ] Need to parse server response properly
+- [ ] Error catching
+- [ ] Scroll down on entering

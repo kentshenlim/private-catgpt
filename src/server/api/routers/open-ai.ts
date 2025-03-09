@@ -9,11 +9,11 @@ export const openAIRouter = createTRPCRouter({
   chatCompletionPrompt: publicProcedure
     .input(z.array(MessageSchema))
     .output(MessageSchema)
-    .query(async ({ input }) => {
+    .mutation(async ({ input }) => {
       const completion = await openai.chat.completions.create({
         model: "gpt-4o-mini",
         messages: input,
-        store: false,
+        store: true,
       });
       const response =
         completion.choices[0]?.message.content ??
