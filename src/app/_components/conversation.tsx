@@ -29,7 +29,7 @@ function SystemResponse({ children }: { children: string }) {
 
 function UserResponse({ children }: { children: string }) {
   return (
-    <article className="max-w-[40ch] self-end rounded-2xl bg-primary px-5 py-3">
+    <article className="max-w-[40ch] self-end rounded-xl rounded-br-3xl rounded-tr-md bg-primary px-4 py-3">
       {children}
     </article>
   );
