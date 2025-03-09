@@ -3,11 +3,12 @@ import Header from "@/app/_components/Header";
 import Conversation from "@/app/_components/Conversation";
 import Prompt from "@/app/_components/Prompt";
 import Footer from "@/app/_components/Footer";
+import { ConversationProvider } from "@/app/_components/ConversationProvider";
 
-export default async function Home() {
+export default function Home() {
   // const test = await api.openAI.chatCompletionPrompt([
   //   {
-  //     content: "What is the best species of cat?",
+  //     content: "What do you do when you are anxious?",
   //     role: "user",
   //   },
   // ]);
@@ -16,19 +17,21 @@ export default async function Home() {
   // void api.post.getLatest.prefetch();
 
   return (
-    <main className="flex h-[100dvh] flex-col px-4">
-      <header>
-        <Header />
-      </header>
-      <section className="flex-grow overflow-y-auto">
-        <Conversation />
-      </section>
-      <section>
-        <Prompt />
-      </section>
-      <footer>
-        <Footer />
-      </footer>
-    </main>
+    <ConversationProvider>
+      <main className="flex h-[100dvh] flex-col px-4">
+        <header>
+          <Header />
+        </header>
+        <section className="flex-grow overflow-y-auto">
+          <Conversation />
+        </section>
+        <section>
+          <Prompt />
+        </section>
+        <footer>
+          <Footer />
+        </footer>
+      </main>
+    </ConversationProvider>
   );
 }
