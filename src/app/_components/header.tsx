@@ -1,4 +1,4 @@
-import { PanelsTopLeft, PenLine } from "lucide-react";
+import { PanelsTopLeft, PenLine, PawPrint } from "lucide-react";
 
 export default function Header() {
   return (
@@ -6,7 +6,10 @@ export default function Header() {
       <button>
         <PanelsTopLeft strokeWidth={2.5} />
       </button>
-      <h1 className="text-xl font-semibold">CatGPT</h1>
+      <div className="flex gap-1">
+        <PawPrint />
+        <h1 className="text-xl font-semibold">CatGPT</h1>
+      </div>
       <button>
         <PenLine />
       </button>
