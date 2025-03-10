@@ -14,8 +14,15 @@ export default function Conversation() {
       scrollerRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [conversation]);
 
-  return (
-    <div className="flex flex-col gap-y-8 px-6 pb-12 pt-4 text-base/7 [&_li]:my-2 [&_ol]:my-2 [&_ul]:my-2">
+  return !conversation.length ? (
+    <div className="flex w-full flex-col items-center justify-center gap-2">
+      <AnimatedCat isSpinning={false} size={120} />
+      <h1 className="w-3/4 text-center text-3xl font-semibold">
+        What can meow help with?
+      </h1>
+    </div>
+  ) : (
+    <div className="flex w-full flex-col gap-y-8 px-6 pb-12 pt-4 text-base/7 [&_li]:my-2 [&_ol]:my-2 [&_ul]:my-2">
       {conversation.map((message, idx) =>
         message.role === "system" ? (
           <SystemResponse key={idx}>{message.content}</SystemResponse>

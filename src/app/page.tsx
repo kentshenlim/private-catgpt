@@ -11,7 +11,7 @@ export default function Home() {
         <header>
           <Header />
         </header>
-        <section className="flex-grow overflow-y-auto">
+        <section className="flex flex-grow overflow-y-auto">
           <Conversation />
         </section>
         <section>
