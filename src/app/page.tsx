@@ -7,11 +7,11 @@ import { ConversationProvider } from "@/app/_components/ConversationProvider";
 export default function Home() {
   return (
     <ConversationProvider>
-      <main className="flex h-[100dvh] flex-col px-4">
+      <main className="flex h-[100dvh] flex-col [&>*]:px-4">
         <header>
           <Header />
         </header>
-        <section className="flex flex-grow overflow-y-auto">
+        <section className="flex flex-grow overflow-y-auto !px-0">
           <Conversation />
         </section>
         <section>
