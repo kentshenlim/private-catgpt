@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-export function AnimatedCat({
+export default function AnimatedCat({
   size = 32,
   isSpinning = true,
 }: {

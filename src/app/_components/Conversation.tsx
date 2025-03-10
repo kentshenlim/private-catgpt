@@ -2,7 +2,7 @@
 
 import { useConversation } from "./ConversationProvider";
 import Markdown from "react-markdown";
-import { AnimatedCat } from "@/lib/ui";
+import AnimatedCat from "@/lib/ui/AnimatedCat";
 import { useRef, useEffect } from "react";
 
 export default function Conversation() {
