@@ -1,5 +1,6 @@
-import { PenLine, PawPrint } from "lucide-react";
+import { PawPrint } from "lucide-react";
 import ThemeToggler from "@/lib/ui/ThemeToggler";
+import ResetButton from "@/app/_components/ResetButton";
 
 export default function Header() {
   return (
@@ -9,9 +10,7 @@ export default function Header() {
         <PawPrint />
         <h1 className="text-xl font-semibold">CatGPT</h1>
       </div>
-      <button>
-        <PenLine />
-      </button>
+      <ResetButton />
     </div>
   );
 }

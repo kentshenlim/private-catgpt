@@ -17,5 +17,6 @@ Chat app with OpenAI integration. Using gpt-4o-mini.
 - [ ] Log in page, with database
 - [ ] Form validation (min length, max length, is empty, both client and server
       side)
-- [ ] Starting new chat window
-- [ ] Cancel request
+- [ ] Multi line in user response
+- [ ] Starting new chat window: modal
+- [ ] Cancel request idea: use mutateAsync, race with a cancelPromise
