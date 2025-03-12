@@ -1,42 +1,64 @@
 "use client";
 
-import { SendHorizontal } from "lucide-react";
+import { SendHorizontal, Pause } from "lucide-react";
 import { useConversation } from "./ConversationProvider";
-import { type KeyboardEvent, type FormEvent } from "react";
+import {
+  type KeyboardEvent,
+  type FormEvent,
+  type ButtonHTMLAttributes,
+} from "react";
 import { useState, useRef } from "react";
 import { api } from "@/trpc/react";
+import { type Message } from "@/lib/schema";
 
 export default function Prompt() {
   const { appendMessage, conversation, isSystemThinking, setIsSystemThinking } =
     useConversation();
   const [userMessage, setUserMessage] = useState("");
   const formRef = useRef<HTMLFormElement>(null);
+  const cancelRequest = useRef<(() => void) | null>(null);
   const sendMessage = api.openAI.chatCompletionPrompt.useMutation(); // client - tRPC
 
-  function handleSubmit(e: FormEvent) {
+  async function handleSubmit(e: FormEvent) {
     // handleSubmit mutate state multiple times, so must use callback in addConversation
     e.preventDefault();
     appendMessage({ role: "user", content: userMessage });
     setUserMessage("");
     setIsSystemThinking(true);
-    sendMessage.mutate(
-      [...conversation, { role: "user", content: userMessage }],
-      {
-        onSuccess: (response) => {
-          appendMessage(response);
-        },
-        onSettled() {
-          setIsSystemThinking(false);
-        },
-      },
-    );
+    const cancelPromise = new Promise<Message>((resolve, _) => {
+      cancelRequest.current = () =>
+        resolve({
+          role: "system",
+          content: "🐾 Request scratched!",
+        });
+    });
+    Promise.race([
+      sendMessage.mutateAsync([
+        ...conversation,
+        { role: "user", content: userMessage },
+      ]),
+      cancelPromise,
+    ])
+      .then((res) => {
+        appendMessage(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        setIsSystemThinking(false);
+      });
+  }
+
+  function handleCancel() {
+    if (cancelRequest.current) cancelRequest.current();
   }
 
   function handleEnterPress(e: KeyboardEvent) {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       const form = formRef.current;
-      if (form)
+      if (form && !isSystemThinking)
         form.dispatchEvent(
           new Event("submit", { bubbles: true, cancelable: true }),
         );
@@ -61,13 +83,26 @@ export default function Prompt() {
         value={userMessage}
         onKeyDown={handleEnterPress}
       />
-      <button
-        type="submit"
-        className="self-end rounded-full bg-accent p-2 text-sm text-background hover:bg-accent/70 disabled:cursor-not-allowed disabled:opacity-40"
-        disabled={isSystemThinking || userMessage.length === 0}
-      >
-        <SendHorizontal strokeWidth={2} size={20} />
-      </button>
+      {isSystemThinking ? (
+        <RoundButton type="button" onClick={handleCancel}>
+          <Pause strokeWidth={2} size={20} />
+        </RoundButton>
+      ) : (
+        <RoundButton type="submit" disabled={userMessage.length === 0}>
+          <SendHorizontal strokeWidth={2} size={20} />
+        </RoundButton>
+      )}
     </form>
+  );
+}
+
+function RoundButton(props: ButtonHTMLAttributes<HTMLButtonElement>) {
+  return (
+    <button
+      className="self-end rounded-full bg-accent p-2 text-sm text-background hover:bg-accent/70 disabled:cursor-not-allowed disabled:opacity-40"
+      {...props}
+    >
+      {props.children}
+    </button>
   );
 }
