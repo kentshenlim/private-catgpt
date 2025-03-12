@@ -22,7 +22,7 @@ export default function Conversation() {
       </h1>
     </div>
   ) : (
-    <div className="flex w-full flex-col gap-y-8 overflow-y-auto px-10 pb-8 pt-4 text-base/7 [&_li]:my-2 [&_ol]:my-2 [&_ul]:my-2">
+    <div className="flex w-full flex-col gap-y-8 overflow-y-auto px-10 pb-8 pt-4 text-base/7 [&_li]:my-2 [&_ol]:my-2 [&_p]:mb-3 [&_ul]:my-2">
       {conversation.map((message, idx) =>
         message.role === "system" ? (
           <SystemResponse key={idx}>{message.content}</SystemResponse>
