@@ -4,6 +4,11 @@ import { useConversation } from "@/app/_components/ConversationProvider";
 import Markdown from "react-markdown";
 import AnimatedCat from "@/lib/ui/AnimatedCat";
 import { useRef, useEffect } from "react";
+import SyntaxHighlighter from "react-syntax-highlighter";
+import {
+  kimbieLight,
+  atelierDuneDark,
+} from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 export default function Conversation() {
   const { conversation, isSystemThinking } = useConversation();
@@ -22,7 +27,7 @@ export default function Conversation() {
       </h1>
     </div>
   ) : (
-    <div className="flex w-full flex-col gap-y-8 overflow-y-auto px-10 pb-8 pt-4 text-base/7 [&_li]:my-2 [&_ol]:my-2 [&_p]:mb-2 [&_ul]:my-2">
+    <div className="flex w-full flex-col gap-y-8 overflow-y-auto px-10 pb-8 pt-4 text-base/7 [&_li]:my-2 [&_ol]:my-2 [&_p]:mb-2 [&_pre]:my-4 [&_pre]:overflow-y-auto [&_ul]:my-2">
       {conversation.map((message, idx) =>
         message.role === "system" ? (
           <SystemResponse key={idx}>{message.content}</SystemResponse>
@@ -44,7 +49,30 @@ function SystemResponse({ children }: { children: string }) {
   return (
     <article>
       <AnimatedCat isSpinning={false} />
-      <Markdown>{children}</Markdown>
+      <Markdown
+        components={{
+          code(props) {
+            const { children, className, ...rest } = props;
+            const match = /language-(\w+)/.exec(className ?? "");
+            return match ? (
+              <SyntaxHighlighter
+                PreTag="div"
+                language={match[1]}
+                style={atelierDuneDark}
+              >
+                {/*eslint-disable-next-line @typescript-eslint/no-base-to-string*/}
+                {String(children)}
+              </SyntaxHighlighter>
+            ) : (
+              <code {...rest} className={className}>
+                {children}
+              </code>
+            );
+          },
+        }}
+      >
+        {children}
+      </Markdown>
     </article>
   );
 }
