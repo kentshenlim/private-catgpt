@@ -8,8 +8,9 @@ import {
   kimbieLight,
 } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
+import AnimatedCat from "@/app/_components/AnimatedCat";
 import { useConversation } from "@/app/_states/ConversationProvider";
-import AnimatedCat from "@/lib/ui/AnimatedCat";
+import { useTheme } from "@/app/_states/ThemeProvider";
 
 export default function Conversation() {
   const { conversation, isSystemThinking } = useConversation();
@@ -47,6 +48,7 @@ export default function Conversation() {
 }
 
 function SystemResponse({ children }: { children: string }) {
+  const { isDarkTheme } = useTheme();
   return (
     <article>
       <AnimatedCat isSpinning={false} />
@@ -59,7 +61,7 @@ function SystemResponse({ children }: { children: string }) {
               <SyntaxHighlighter
                 PreTag="div"
                 language={match[1]}
-                style={atelierDuneDark}
+                style={isDarkTheme ? atelierDuneDark : kimbieLight}
               >
                 {/*eslint-disable-next-line @typescript-eslint/no-base-to-string*/}
                 {String(children)}

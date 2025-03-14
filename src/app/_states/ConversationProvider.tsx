@@ -19,7 +19,7 @@ const ConversationContext = createContext<{
   },
   isSystemThinking: false,
   setIsSystemThinking(isThinking) {
-    console.log(`System is ${isThinking ? "" : "not"} now.`);
+    console.log(`System is ${isThinking ? "" : "not"} thinking now.`);
   },
 });
 

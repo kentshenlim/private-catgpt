@@ -4,6 +4,8 @@ import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
 
 import { TRPCReactProvider } from "@/trpc/react";
+import { ConversationProvider } from "@/app/_states/ConversationProvider";
+import { ThemeProvider } from "@/app/_states/ThemeProvider";
 
 export const metadata: Metadata = {
   title: "CatGPT",
@@ -15,9 +17,13 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${GeistSans.variable} dark`} id="html-root">
+    <html lang="en" className={`${GeistSans.variable}`} id="html-root">
       <body className="bg-background text-text">
-        <TRPCReactProvider>{children}</TRPCReactProvider>
+        <TRPCReactProvider>
+          <ThemeProvider>
+            <ConversationProvider>{children}</ConversationProvider>
+          </ThemeProvider>
+        </TRPCReactProvider>
       </body>
     </html>
   );
