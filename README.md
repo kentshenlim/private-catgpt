@@ -13,7 +13,6 @@ Chat app with OpenAI integration. Using gpt-4o-mini.
 - [ ] Remove public procedure of open ai endpoints
 - [ ] Log in page, with database
 - [ ] Number of working days
-- [ ] Multi line in user response
 
 ## SQL
 
