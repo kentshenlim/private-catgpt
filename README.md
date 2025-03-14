@@ -14,7 +14,6 @@ Chat app with OpenAI integration. Using gpt-4o-mini.
 - [ ] Log in page, with database
 - [ ] Number of working days
 - [ ] Multi line in user response
-- [ ] Change rest to dustbin
 
 ## SQL
 
