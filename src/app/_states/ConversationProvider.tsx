@@ -1,7 +1,7 @@
 "use client";
 import { createContext, useContext, useState } from "react";
 import { type Message } from "@/lib/schema";
-import { shortFakeConversation } from "@/lib/utils/fake-conversation";
+import { shortFakeConversation } from "@/lib/fake-conversation";
 
 const ConversationContext = createContext<{
   conversation: Message[];
