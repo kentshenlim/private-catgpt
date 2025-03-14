@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { type RefObject, useEffect, useRef } from "react";
 import Markdown from "react-markdown";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import {
@@ -14,12 +14,18 @@ import { useTheme } from "@/app/_states/ThemeProvider";
 
 export default function Conversation() {
   const { conversation, isSystemThinking } = useConversation();
-  const scrollerRef = useRef<HTMLDivElement>(null);
+  const lastUserMessageRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    if (conversation[conversation.length - 1]?.role === "user")
-      scrollerRef.current?.scrollIntoView({ behavior: "smooth" });
+    lastUserMessageRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
   }, [conversation]);
+
+  const lastUserMessageIdx = conversation
+    .map((message) => message.role)
+    .lastIndexOf("user");
 
   return !conversation.length ? (
     <div className="flex w-full flex-col items-center justify-center gap-2">
@@ -34,7 +40,12 @@ export default function Conversation() {
         message.role === "system" ? (
           <SystemResponse key={idx}>{message.content}</SystemResponse>
         ) : (
-          <UserResponse key={idx}>{message.content}</UserResponse>
+          <UserResponse
+            key={idx}
+            ref={idx === lastUserMessageIdx ? lastUserMessageRef : undefined}
+          >
+            {message.content}
+          </UserResponse>
         ),
       )}
       {isSystemThinking && (
@@ -42,7 +53,6 @@ export default function Conversation() {
           <AnimatedCat />
         </article>
       )}
-      <div ref={scrollerRef}></div>
     </div>
   );
 }
@@ -80,9 +90,18 @@ function SystemResponse({ children }: { children: string }) {
   );
 }
 
-function UserResponse({ children }: { children: string }) {
+function UserResponse({
+  children,
+  ref,
+}: {
+  children: string;
+  ref?: RefObject<HTMLElement>;
+}) {
   return (
-    <article className="max-w-[40ch] self-end rounded-xl rounded-br-3xl rounded-tr-md bg-primary px-4 py-3 whitespace-pre-wrap">
+    <article
+      className="max-w-[40ch] self-end whitespace-pre-wrap rounded-xl rounded-br-3xl rounded-tr-md bg-primary px-4 py-3"
+      ref={ref}
+    >
       {children}
     </article>
   );
