@@ -1,7 +1,8 @@
 "use client";
 
 import { SquarePen } from "lucide-react";
-import { useConversation } from "@/app/_components/ConversationProvider";
+
+import { useConversation } from "@/app/_states/ConversationProvider";
 
 export default function ResetButton() {
   const { clearConversation, isSystemThinking } = useConversation();

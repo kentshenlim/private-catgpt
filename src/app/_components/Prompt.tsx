@@ -1,15 +1,17 @@
 "use client";
 
-import { SendHorizontal, Pause } from "lucide-react";
-import { useConversation } from "./ConversationProvider";
+import { Pause, SendHorizontal } from "lucide-react";
 import {
-  type KeyboardEvent,
-  type FormEvent,
   type ButtonHTMLAttributes,
+  type FormEvent,
+  type KeyboardEvent,
+  useRef,
+  useState,
 } from "react";
-import { useState, useRef } from "react";
-import { api } from "@/trpc/react";
+
+import { useConversation } from "@/app/_states/ConversationProvider";
 import { type Message } from "@/lib/schema";
+import { api } from "@/trpc/react";
 
 export default function Prompt() {
   const { appendMessage, conversation, isSystemThinking, setIsSystemThinking } =

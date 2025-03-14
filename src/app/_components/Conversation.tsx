@@ -1,14 +1,15 @@
 "use client";
 
-import { useConversation } from "@/app/_components/ConversationProvider";
+import { useEffect, useRef } from "react";
 import Markdown from "react-markdown";
-import AnimatedCat from "@/lib/ui/AnimatedCat";
-import { useRef, useEffect } from "react";
 import SyntaxHighlighter from "react-syntax-highlighter";
 import {
-  kimbieLight,
   atelierDuneDark,
+  kimbieLight,
 } from "react-syntax-highlighter/dist/esm/styles/hljs";
+
+import { useConversation } from "@/app/_states/ConversationProvider";
+import AnimatedCat from "@/lib/ui/AnimatedCat";
 
 export default function Conversation() {
   const { conversation, isSystemThinking } = useConversation();

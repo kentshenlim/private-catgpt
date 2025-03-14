@@ -1,8 +1,8 @@
-import Header from "@/app/_components/Header";
 import Conversation from "@/app/_components/Conversation";
-import Prompt from "@/app/_components/Prompt";
 import Footer from "@/app/_components/Footer";
-import { ConversationProvider } from "@/app/_components/ConversationProvider";
+import Header from "@/app/_components/Header";
+import Prompt from "@/app/_components/Prompt";
+import { ConversationProvider } from "@/app/_states/ConversationProvider";
 
 export default function Home() {
   return (
