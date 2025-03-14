@@ -4,17 +4,20 @@ Chat app with OpenAI integration. Using gpt-4o-mini.
 
 ## TODO
 
-- [ ] Responsive
 - [ ] Deploy to Vercel
-- [ ] Remove public procedure of open ai endpoints
-- [ ] Store in SQL
 - [ ] Remove example components
-- [ ] Error catching
-- [ ] localStorage if no SQL
+- [ ] Error catching, error page
 - [ ] Change font if needed
-- [ ] Form validation (min length, max length, is empty, both client and server
-      side)
-- [ ] Starting new chat window: modal
+- [ ] Documentation on storing chat in SQL
+- [ ] Responsive
+- [ ] Remove public procedure of open ai endpoints
 - [ ] Log in page, with database
-- [ ] Multi line in user response
 - [ ] Number of working days
+- [ ] Multi line in user response
+
+## SQL
+
+- Update the TRPC endpoint, apart from sending back to states, store also in DB
+- Dynamic route segment for each conversation
+- Map to user ID
+- Load
