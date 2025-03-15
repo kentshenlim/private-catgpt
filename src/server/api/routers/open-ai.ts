@@ -18,43 +18,67 @@ export const openAIRouter = createTRPCRouter({
         store: true,
         tools: [workingDayTool],
       });
-      let responseText = "Snap! CatGPT is offline. Please check back later.";
-      if (completion.choices[0]) {
-        const choice = completion.choices[0];
-        if (choice.finish_reason === "tool_calls") {
-          const toolCallData = choice.message.tool_calls;
-          if (!toolCallData?.[0]) {
-            responseText =
-              "CatGPT cannot find the tool required to answer your question. Please try again.";
-          } else {
-            const toolCallID = toolCallData[0].id;
-            const { name: functionName, arguments: functionArgs } =
-              toolCallData[0].function;
-            console.log(functionName, functionArgs);
-            const toolCallResult = 520;
-            const messages: ChatCompletionMessageParam[] = [...input];
-            messages.push(choice.message); // Not pushing to state
-            messages.push({
-              // Not pushing to state
-              role: "tool",
-              tool_call_id: toolCallID,
-              content: toolCallResult.toString(),
-            });
-            const completionToolCall = await openai.chat.completions.create({
-              model: "gpt-4o-mini",
-              messages,
-              store: true,
-              tools: [workingDayTool],
-            });
-            responseText =
-              completionToolCall.choices[0]?.message.content ??
-              "CatGPT cannot generate response following tool call. Please try again.";
-          }
-        } else if (choice.finish_reason === "stop") {
-          responseText =
-            choice.message.content ?? "CatGPT has nothing to say...";
-        }
+
+      if (!completion.choices[0]) {
+        return {
+          role: "system",
+          content: "Snap! CatGPT is offline. Please check back later.",
+        };
       }
-      return { role: "system", content: responseText };
+
+      const choice = completion.choices[0];
+
+      // If first choice is to invoke tool calls
+      if (choice.finish_reason === "tool_calls") {
+        const toolCallData = choice.message.tool_calls;
+        if (!toolCallData?.[0])
+          return {
+            role: "system",
+            content:
+              "CatGPT cannot find the tool required to answer your question. Please try again.",
+          };
+        // 1. Get tool call result
+        // 2. Format messages for chat completion
+        // 3. Get chat completion response
+        const toolCallID = toolCallData[0].id;
+        const { name: functionName, arguments: functionArgs } =
+          toolCallData[0].function;
+        const toolCallResult = 520;
+        const messages: ChatCompletionMessageParam[] = [...input];
+        messages.push(choice.message); // Not pushing to state
+        messages.push({
+          // Not pushing to state
+          role: "tool",
+          tool_call_id: toolCallID,
+          content: toolCallResult.toString(),
+        });
+        const completionToolCall = await openai.chat.completions.create({
+          model: "gpt-4o-mini",
+          messages,
+          store: true,
+          tools: [workingDayTool],
+        });
+        return {
+          role: "system",
+          content:
+            completionToolCall.choices[0]?.message.content ??
+            "CatGPT cannot generate response following tool call. Please try again.",
+        };
+      }
+
+      // If first choice is ordinary chat completion response
+      if (choice.finish_reason === "stop") {
+        return {
+          role: "system",
+          content: choice.message.content ?? "CatGPT has nothing to say...",
+        };
+      }
+
+      // If first choice has unsupported finish_reason
+      return {
+        role: "system",
+        content:
+          "CatGPT encountered unsupported finish_reason. Please try again.",
+      };
     }),
 });
