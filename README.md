@@ -12,7 +12,6 @@ Chat app with OpenAI integration. Using gpt-4o-mini.
 - [ ] Responsive
 - [ ] Remove public procedure of open ai endpoints
 - [ ] Log in page, with database
-- [ ] Position of circular button
 
 ## SQL
 

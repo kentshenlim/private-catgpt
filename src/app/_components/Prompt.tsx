@@ -101,7 +101,7 @@ export default function Prompt() {
 function RoundButton(props: ButtonHTMLAttributes<HTMLButtonElement>) {
   return (
     <button
-      className="self-end rounded-full bg-accent p-2 text-sm text-background hover:bg-accent/70 disabled:cursor-not-allowed disabled:opacity-40"
+      className="mr-1 self-end rounded-full bg-accent p-2 text-sm text-background hover:bg-accent/70 disabled:cursor-not-allowed disabled:opacity-40"
       {...props}
     >
       {props.children}
