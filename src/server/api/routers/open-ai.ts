@@ -1,9 +1,17 @@
-import { z } from "zod";
 import OpenAI from "openai";
-import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
-import { MessageSchema, type Message } from "@/lib/schema";
-import { workingDayTool } from "@/server/open-ai-tools/working-day";
 import { type ChatCompletionMessageParam } from "openai/resources/index.mjs";
+import { z } from "zod";
+
+import {
+  type GetWorkingDaysNumParams,
+  type Message,
+  MessageSchema,
+} from "@/lib/schema";
+import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
+import {
+  workingDayTool,
+  calcWorkingDays,
+} from "@/server/open-ai-tools/working-day";
 
 const openai = new OpenAI(); // Will read OPENAI_API_KEY automatically
 
@@ -46,7 +54,9 @@ async function getChatCompletionResponseText(input: Message[]) {
     const toolCallID = toolCallData[0].id;
     const { name: functionName, arguments: functionArgs } =
       toolCallData[0].function;
-    const toolCallResult = 520;
+    const toolCallResult = calcWorkingDays(
+      JSON.parse(functionArgs) as GetWorkingDaysNumParams,
+    );
     const messages: ChatCompletionMessageParam[] = [...input];
     messages.push(choice.message); // Not pushing to state
     messages.push({
