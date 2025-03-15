@@ -11,7 +11,8 @@ Chat app with OpenAI integration. Using gpt-4o-mini.
 - [ ] Documentation on storing chat in SQL
 - [ ] Responsive
 - [ ] Remove public procedure of open ai endpoints
-- [ ] Log in page, with database
+- [ ] Log in page
+- [ ] Delete middleware if not needed
 
 ## SQL
 
