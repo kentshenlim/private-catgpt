@@ -7,7 +7,7 @@ export const authConfig = {
   callbacks: {
     authorized({ auth, request: { nextUrl } }) {
       const isLoggedIn = !!auth?.user;
-      const isAtProtected = nextUrl.pathname === "/"; // Home = chat app is protected
+      const isAtProtected = nextUrl.pathname === "/sd"; // Home = chat app is protected
       console.log(isAtProtected);
       if (isAtProtected)
         return isLoggedIn; // At protected route must log in

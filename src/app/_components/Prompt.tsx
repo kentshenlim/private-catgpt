@@ -77,7 +77,7 @@ export default function Prompt() {
         name="prompt"
         id="prompt"
         placeholder="Ask anything"
-        className="bg-test/[50%] mx-2 resize-none px-3 py-1 placeholder-text/50 focus:outline-none"
+        className="mx-2 resize-none px-3 py-1 placeholder-text/50 focus:outline-none"
         rows={2}
         onChange={(e) => {
           setUserMessage(e.target.value);
