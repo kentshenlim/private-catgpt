@@ -12,7 +12,7 @@ export const workingDayTool = zodFunction({
 });
 
 function calcWorkingDays(data: z.infer<typeof GetWorkingDaysNumParamsSchema>) {
-  return 1;
+  return 520;
 }
 
 // export const workingDayTool: ChatCompletionTool = {
