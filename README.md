@@ -13,8 +13,6 @@ Chat app with OpenAI integration. Using gpt-4o-mini.
 - [ ] Remove public procedure of open ai endpoints
 - [ ] Log in page, with database
 - [ ] Position of circular button
-- [ ] Number of working days, function need to check validity of date
-- [ ] OpenAi tools router
 
 ## SQL
 
