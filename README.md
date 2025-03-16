@@ -9,9 +9,6 @@ Chat app with OpenAI integration. Using gpt-4o-mini.
 - [ ] Change font if needed
 - [ ] Documentation on storing chat in SQL
 - [ ] Responsive
-- [ ] Remove public procedure of open ai endpoints
-- [ ] Error on wrong password
-- [ ] Login in
 - [ ] Icon at top of catgpt at login
 
 ## SQL

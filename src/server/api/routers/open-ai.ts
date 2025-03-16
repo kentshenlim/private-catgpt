@@ -7,7 +7,7 @@ import {
   type Message,
   MessageSchema,
 } from "@/lib/schema";
-import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
+import { createTRPCRouter, protectedProcedure } from "@/server/api/trpc";
 import {
   calcWorkingDays,
   workingDayTool,
@@ -18,7 +18,7 @@ const openai = new OpenAI(); // Will read OPENAI_API_KEY automatically
 const tools = [workingDayTool];
 
 export const openAIRouter = createTRPCRouter({
-  chatCompletionPrompt: publicProcedure
+  chatCompletionPrompt: protectedProcedure
     .input(z.array(MessageSchema))
     .output(MessageSchema)
     .mutation(async ({ input }) => {
