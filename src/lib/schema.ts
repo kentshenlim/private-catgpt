@@ -22,3 +22,10 @@ export const GetWorkingDaysNumParamsSchema = z.object({
 export type GetWorkingDaysNumParams = z.infer<
   typeof GetWorkingDaysNumParamsSchema
 >;
+
+export const LoginSchema = z.object({
+  email: z.string().email(),
+  password: z.string().min(6),
+});
+
+export type Login = z.infer<typeof LoginSchema>;

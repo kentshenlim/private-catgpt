@@ -1,20 +1,44 @@
-import { type InputHTMLAttributes } from "react";
+import { type FormEvent, type InputHTMLAttributes } from "react";
+import { auth } from "auth";
+import { api } from "@/trpc/server";
+import { AuthError } from "next-auth";
+import { redirect } from "next/navigation";
 
-export default function LoginForm() {
+export default async function LoginForm() {
+  const res = await auth();
+  console.log(res);
+
+  async function formAction(formData: FormData) {
+    "use server";
+    const validationRes = await api.auth.signIn(formData);
+    if (validationRes.isOK) redirect("/");
+
+    // try {
+    //   const p = await api.auth.signIn(formData);
+    // } catch (error) {
+    //   if (error instanceof AuthError) {
+    //     if (error.type === "CredentialsSignin") return "Invalid credentials.";
+    //     return "Something went wrong.";
+    //   }
+    //   console.log("redirectttttttttttttt");
+    // }
+  }
+
   return (
     <form
-      action=""
       className="flex max-w-[30ch] flex-col items-center gap-3 text-text"
+      action={formAction}
     >
       <h1 className="mb-4 text-center text-3xl font-bold tracking-wider text-accent">
         Welcome back
       </h1>
       <div>
         <StyledInput
-          type="text"
+          type="email"
           name="email"
           id="email"
           placeholder="Email address*"
+          required
         />
       </div>
       <div>
@@ -23,6 +47,7 @@ export default function LoginForm() {
           name="password"
           id="password"
           placeholder="Password*"
+          required
         />
       </div>
       <button

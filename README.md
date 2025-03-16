@@ -13,6 +13,7 @@ Chat app with OpenAI integration. Using gpt-4o-mini.
 - [ ] Remove public procedure of open ai endpoints
 - [ ] Log in page
 - [ ] Delete middleware if not needed
+- [ ] Set token expiration date
 
 ## SQL
 
