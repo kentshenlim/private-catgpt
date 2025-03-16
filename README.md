@@ -7,7 +7,6 @@ Chat app with OpenAI integration. Using gpt-4o-mini.
 - [ ] Deploy to Vercel
 - [ ] Remove example components
 - [ ] Documentation on storing chat in SQL
-- [ ] Responsive
 
 ## SQL
 
