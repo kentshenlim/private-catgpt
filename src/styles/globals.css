@@ -44,3 +44,19 @@ ol {
 ul {
   @apply list-disc pl-6;
 }
+
+/* Responsive padding to keep scrollbar to right edge of screen */
+@media (width >= 0px) {
+  .prompt-window {
+    @apply px-4;
+  }
+}
+
+@media (width >= 768) {
+  .conversation-window {
+    padding-inline: calc((100% - 720px) / 2);
+  }
+  .prompt-window {
+    padding-inline: calc((100% - 720px + 32px) / 2);
+  }
+}

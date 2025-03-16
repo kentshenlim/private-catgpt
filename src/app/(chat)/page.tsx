@@ -5,19 +5,21 @@ import Prompt from "@/app/(chat)/_components/Prompt";
 
 export default async function Home() {
   return (
-    <main className="flex h-[100dvh] flex-col [&>*]:px-4">
-      <header>
+    <main className="flex h-[100dvh] flex-col">
+      <header className="px-4">
         <Header />
       </header>
-      <section className="flex flex-grow overflow-y-auto !px-0">
-        <Conversation />
-      </section>
-      <section>
-        <Prompt />
-      </section>
-      <footer>
-        <Footer />
-      </footer>
+      <div className="mx-auto flex min-h-0 w-full flex-grow flex-col">
+        <section className="conversation-window min-h-0 flex-grow overflow-y-auto">
+          <Conversation />
+        </section>
+        <section className="prompt-window">
+          <Prompt />
+        </section>
+        <footer>
+          <Footer />
+        </footer>
+      </div>
     </main>
   );
 }
