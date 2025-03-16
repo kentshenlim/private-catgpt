@@ -28,7 +28,7 @@ export default function Conversation() {
     .lastIndexOf("user");
 
   return !conversation.length ? (
-    <div className="flex w-full flex-col items-center justify-center gap-2">
+    <div className="flex h-full w-full flex-col items-center justify-center gap-2">
       <AnimatedCat isSpinning={false} size={120} />
       <h1 className="w-3/4 text-center text-3xl font-semibold">
         What can meow help you with today?
