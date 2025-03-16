@@ -17,7 +17,11 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${GeistSans.variable}`} id="html-root">
+    <html
+      lang="en"
+      className={`${GeistSans.variable} overflow-hidden`}
+      id="html-root"
+    >
       <body className="bg-background text-text">
         <TRPCReactProvider>
           <ThemeProvider>
