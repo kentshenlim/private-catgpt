@@ -52,11 +52,11 @@ ul {
   }
 }
 
-@media (width >= 768) {
+@media (width >= 768px) {
   .conversation-window {
-    padding-inline: calc((100% - 720px) / 2);
+    padding-inline: calc((100% - 768px) / 2);
   }
   .prompt-window {
-    padding-inline: calc((100% - 720px + 32px) / 2);
+    padding-inline: calc((100% - 768px + 32px) / 2); /* Precise */
   }
 }
