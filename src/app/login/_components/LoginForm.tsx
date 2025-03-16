@@ -1,27 +1,13 @@
-import { type FormEvent, type InputHTMLAttributes } from "react";
-import { auth } from "auth";
-import { api } from "@/trpc/server";
-import { AuthError } from "next-auth";
 import { redirect } from "next/navigation";
+import { type InputHTMLAttributes } from "react";
+
+import { api } from "@/trpc/server";
 
 export default async function LoginForm() {
-  const res = await auth();
-  console.log(res);
-
   async function formAction(formData: FormData) {
     "use server";
     const validationRes = await api.auth.signIn(formData);
     if (validationRes.isOK) redirect("/");
-
-    // try {
-    //   const p = await api.auth.signIn(formData);
-    // } catch (error) {
-    //   if (error instanceof AuthError) {
-    //     if (error.type === "CredentialsSignin") return "Invalid credentials.";
-    //     return "Something went wrong.";
-    //   }
-    //   console.log("redirectttttttttttttt");
-    // }
   }
 
   return (

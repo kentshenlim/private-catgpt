@@ -11,9 +11,10 @@ Chat app with OpenAI integration. Using gpt-4o-mini.
 - [ ] Documentation on storing chat in SQL
 - [ ] Responsive
 - [ ] Remove public procedure of open ai endpoints
-- [ ] Log in page
-- [ ] Delete middleware if not needed
 - [ ] Set token expiration date
+- [ ] Error on wrong password
+- [ ] Password sets, and auth.ts update
+- [ ] Delete unused schema
 
 ## SQL
 
