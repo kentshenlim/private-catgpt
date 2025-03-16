@@ -1,11 +1,14 @@
+"use client";
 import { motion } from "framer-motion";
 
 export default function AnimatedCat({
   size = 32,
   isSpinning = true,
+  once = false,
 }: {
   size?: number;
   isSpinning?: boolean;
+  once?: boolean;
 }) {
   return (
     // SVG adopted from Lucide
@@ -27,7 +30,11 @@ export default function AnimatedCat({
           fill="none"
           initial={{ strokeDasharray: 100, strokeDashoffset: 100 }}
           animate={{ strokeDashoffset: 0 }}
-          transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
+          transition={{
+            repeat: once ? 0 : Infinity,
+            duration: once ? 4 : 2,
+            ease: "linear",
+          }}
           className="stroke-accent"
         />
       ) : (
