@@ -13,8 +13,8 @@ Chat app with OpenAI integration. Using gpt-4o-mini.
 - [ ] Remove public procedure of open ai endpoints
 - [ ] Set token expiration date
 - [ ] Error on wrong password
-- [ ] Password sets, and auth.ts update
 - [ ] Delete unused schema
+- [ ] Icon at top of catgpt at login
 
 ## SQL
 

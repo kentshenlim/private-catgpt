@@ -1,8 +1,8 @@
+import { authConfig } from "auth.config";
+import bcrypt from "bcrypt";
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
-import { authConfig } from "auth.config";
 import { z } from "zod";
-import bcrypt from "bcrypt";
 
 export const { auth, signIn, signOut } = NextAuth({
   ...authConfig,
@@ -19,9 +19,6 @@ export const { auth, signIn, signOut } = NextAuth({
           const { email, password } = parsedCredentials.data;
           const { ADMIN_EMAIL: correctEmail, ADMIN_PASSWORD: correctPassword } =
             process.env;
-          console.log("Auth successful");
-          return { user: "ADMIN" };
-          return null;
           if (!correctEmail || !correctPassword) return null;
           if (email !== correctEmail) return null;
           const passwordMatch = await bcrypt.compare(password, correctPassword);
