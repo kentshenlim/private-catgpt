@@ -14,8 +14,8 @@ export default function AnimatedCat({
     // SVG adopted from Lucide
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width={size ?? 20}
-      height={size ?? 20}
+      width={size}
+      height={size}
       viewBox="0 0 24 24"
       fill="none"
       className="mb-1"
