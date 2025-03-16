@@ -1,4 +1,4 @@
-import AnimatedCat from "@/app/_components/AnimatedCat";
+import AnimatedCat from "@/lib/ui/AnimatedCat";
 
 export default function Header() {
   return (

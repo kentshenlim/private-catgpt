@@ -8,7 +8,7 @@ import {
   kimbieLight,
 } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
-import AnimatedCat from "@/app/_components/AnimatedCat";
+import AnimatedCat from "@/lib/ui/AnimatedCat";
 import { useConversation } from "@/app/_states/ConversationProvider";
 import { useTheme } from "@/app/_states/ThemeProvider";
 

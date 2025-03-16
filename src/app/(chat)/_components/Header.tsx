@@ -1,7 +1,7 @@
 import { PawPrint } from "lucide-react";
 
-import ResetButton from "@/app/_components/ResetButton";
-import ThemeToggler from "@/app/_components/ThemeToggler";
+import ResetButton from "@/app/(chat)/_components/ResetButton";
+import ThemeToggler from "@/app/(chat)/_components/ThemeToggler";
 
 export default function Header() {
   return (

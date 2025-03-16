@@ -1,7 +1,7 @@
-import Conversation from "@/app/_components/Conversation";
-import Footer from "@/app/_components/Footer";
-import Header from "@/app/_components/Header";
-import Prompt from "@/app/_components/Prompt";
+import Conversation from "@/app/(chat)/_components/Conversation";
+import Footer from "@/app/(chat)/_components/Footer";
+import Header from "@/app/(chat)/_components/Header";
+import Prompt from "@/app/(chat)/_components/Prompt";
 
 export default async function Home() {
   return (
