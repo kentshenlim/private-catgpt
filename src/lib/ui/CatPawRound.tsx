@@ -6,7 +6,7 @@ export default function CatPawRound({ size = 200 }: { size?: number }) {
       width={size}
       height={size}
       viewBox="0 0 512 512"
-      strokeWidth={100}
+      strokeWidth={125}
       className="stroke-accent"
     >
       <g transform="translate(0, 512) scale(0.1, -0.1)" className="fill-accent">
